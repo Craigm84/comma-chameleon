@@ -3,10 +3,13 @@ package com.lbg.project.domain;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Booking {
@@ -18,14 +21,10 @@ public class Booking {
 	private LocalDate date;
 
 	private LocalTime time;
-//awaiting relationships between domains
-	// @JsonBackReference
-	// @ManyToOne
-	// private Property property;
 
-	// @JsonBackReference
-	// @ManyToOne
-	// private Buyer buyer;
+	@JsonBackReference
+	@ManyToOne
+	private Property property;
 
 	public Booking() {
 		super();
@@ -55,20 +54,12 @@ public class Booking {
 		this.time = time;
 	}
 
-//	public Property getProperty() {
-//		return property;
-//	}
-//
-//	public void setProperty(Property property) {
-//		this.property = property;
-//	}
-//
-//	public Buyer getBuyer() {
-//		return buyer;
-//	}
-//
-//	public void setBuyer(Buyer buyer) {
-//		this.buyer = buyer;
-//	}
+	public Property getProperty() {
+		return property;
+	}
+
+	public void setProperty(Property property) {
+		this.property = property;
+	}
 
 }

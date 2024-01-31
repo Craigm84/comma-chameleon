@@ -1,9 +1,14 @@
 package com.lbg.project.domain;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Property {
@@ -20,6 +25,10 @@ public class Property {
 	private double price;
 	private Boolean garden;
 	private String status;
+
+	@JsonManagedReference
+	@OneToMany(mappedBy = "property")
+	private List<Booking> bookings;
 
 	public Property() {
 		super();
@@ -95,6 +104,14 @@ public class Property {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
 	}
 
 }

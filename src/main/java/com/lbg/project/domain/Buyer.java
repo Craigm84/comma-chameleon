@@ -1,14 +1,9 @@
 package com.lbg.project.domain;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class Buyer {
@@ -20,10 +15,6 @@ public class Buyer {
 	private String firstName;
 
 	private String lastName;
-
-	@JsonManagedReference
-	@OneToMany(mappedBy = "property")
-	private List<Property> properties;
 
 	public Buyer() {
 		super();
@@ -51,14 +42,6 @@ public class Buyer {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public List<Property> getProperties() {
-		return properties;
-	}
-
-	public void setProperties(List<Property> properties) {
-		this.properties = properties;
 	}
 
 }

@@ -16,7 +16,7 @@ import com.lbg.project.domain.Seller;
 import com.lbg.project.services.SellerServices;
 
 @RestController
-@RequestMapping("/Seller")
+@RequestMapping("/seller")
 public class SellerController {
 	private SellerServices service;
 
