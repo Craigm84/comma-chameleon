@@ -2,14 +2,17 @@ package com.lbg.project.domain;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Booking {
@@ -25,6 +28,10 @@ public class Booking {
 	@JsonBackReference
 	@ManyToOne
 	private Property property;
+
+	@JsonManagedReference
+	@OneToMany(mappedBy = "booking")
+	private List<Buyer> buyers;
 
 	public Booking() {
 		super();
