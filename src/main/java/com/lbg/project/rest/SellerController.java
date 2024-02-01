@@ -3,6 +3,7 @@ package com.lbg.project.rest;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import com.lbg.project.domain.Seller;
 import com.lbg.project.services.SellerServices;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/seller")
 public class SellerController {
 	private SellerServices service;
