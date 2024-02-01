@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,15 +17,23 @@ public class Property {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
+	@Column(nullable = false)
 	private String address;
+	@Column(nullable = false)
 	private String city;
+	@Column(nullable = false)
 	private String type;
+	@Column(nullable = false)
 	private int bedroom;
+	@Column(nullable = false)
 	private int bathroom;
+	@Column(nullable = false)
 	private double price;
+	@Column(nullable = false)
 	private Boolean garden;
+	@Column(nullable = false)
 	private String status;
+	@Column(nullable = false)
 
 	@JsonManagedReference
 	@OneToMany(mappedBy = "property")
