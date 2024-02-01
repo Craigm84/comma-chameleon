@@ -30,7 +30,7 @@ public class Property {
 	@Column(nullable = false)
 	private double price;
 	@Column(nullable = false)
-	private Boolean garden;
+	private String garden;
 	@Column(nullable = false)
 	private String status;
 	@Column(nullable = false)
@@ -100,11 +100,11 @@ public class Property {
 		this.price = price;
 	}
 
-	public Boolean getGarden() {
+	public String getGarden() {
 		return garden;
 	}
 
-	public void setGarden(Boolean garden) {
+	public void setGarden(String garden) {
 		this.garden = garden;
 	}
 
