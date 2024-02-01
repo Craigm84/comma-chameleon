@@ -73,12 +73,16 @@ public class PropertyServices {
 		if (newProperty.getPrice() != 0) {
 			existing.setPrice(newProperty.getPrice());
 		}
-		if (newProperty.isGarden() != null) {
-			existing.setGarden(newProperty.isGarden());
+		if (newProperty.getGarden() != null) {
+			existing.setGarden(newProperty.getGarden());
 		}
 		if (newProperty.getStatus() != null) {
 			existing.setStatus(newProperty.getStatus());
 		}
+		if (newProperty.getImage() != null) {
+			existing.setImage(newProperty.getImage());
+		}
+
 		Property updated = this.repo.save(existing);
 		return ResponseEntity.ok(updated);
 	}

@@ -34,7 +34,8 @@ public class Property {
 	@Column(nullable = false)
 	private String status;
 	@Column(nullable = false)
-
+	private String image;
+	@Column(nullable = false)
 	@JsonManagedReference
 	@OneToMany(mappedBy = "property")
 	private List<Booking> bookings;
@@ -99,7 +100,7 @@ public class Property {
 		this.price = price;
 	}
 
-	public Boolean isGarden() {
+	public Boolean getGarden() {
 		return garden;
 	}
 
@@ -121,6 +122,14 @@ public class Property {
 
 	public void setBookings(List<Booking> bookings) {
 		this.bookings = bookings;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }
