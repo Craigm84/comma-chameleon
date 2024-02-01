@@ -8,14 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.lbg.project.domain.Property;
-import com.lbg.project.repos.PropertiesRepo;
+import com.lbg.project.repos.PropertyRepo;
 
 @Service
 public class PropertyServices {
 
-	private PropertiesRepo repo;
+	private PropertyRepo repo;
 
-	public PropertyServices(PropertiesRepo repo) {
+	public PropertyServices(PropertyRepo repo) {
 		super();
 		this.repo = repo;
 	}

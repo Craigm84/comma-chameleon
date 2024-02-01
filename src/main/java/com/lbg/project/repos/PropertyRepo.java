@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.lbg.project.domain.Property;
 
-public interface PropertiesRepo extends JpaRepository<Property, Integer> {
+public interface PropertyRepo extends JpaRepository<Property, Integer> {
 
 }
