@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.lbg.project.domain.Property;
+import com.lbg.project.dto.PropertyDTO;
 import com.lbg.project.repos.PropertyRepo;
 
 @Service
@@ -32,16 +33,16 @@ public class PropertyServices {
 	}
 
 //	Find property by ID
-	public ResponseEntity<Property> getProperty(int id) {
+	public ResponseEntity<PropertyDTO> getProperty(int id) {
 //		Creates a container which could have a property
 		Optional<Property> found = this.repo.findById(id);
 //		Checks if the container is empty, if yes then returns not found
 		if (found.isEmpty()) {
-			return new ResponseEntity<Property>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 //		Checks if the container contains a property, then returns the property
 		Property body = found.get();
-		return ResponseEntity.ok(body);
+		return ResponseEntity.ok(new PropertyDTO(body));
 	}
 
 //	Update property data

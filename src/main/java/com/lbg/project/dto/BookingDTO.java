@@ -3,6 +3,8 @@ package com.lbg.project.dto;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.lbg.project.domain.Booking;
+
 public class BookingDTO {
 
 	private Integer id;
@@ -15,11 +17,19 @@ public class BookingDTO {
 
 	private String buyerLastName;
 
-	private String propertyAddress;
+//	private String propertyAddress;
 
 	public BookingDTO() {
 		super();
 
+	}
+
+	public BookingDTO(Booking booking) {
+		this.setId(booking.getId());
+		this.setDate(booking.getDate());
+		this.setTime(booking.getTime());
+		this.setBuyerFirstName(booking.getBuyer().getFirstName());
+		this.setBuyerLastName(booking.getBuyer().getLastName());
 	}
 
 	public Integer getId() {
@@ -62,12 +72,12 @@ public class BookingDTO {
 		this.buyerLastName = buyerLastName;
 	}
 
-	public String getPropertyAddress() {
-		return propertyAddress;
-	}
-
-	public void setPropertyAddress(String propertyAddress) {
-		this.propertyAddress = propertyAddress;
-	}
+//	public String getPropertyAddress() {
+//		return propertyAddress;
+//	}
+//
+//	public void setPropertyAddress(String propertyAddress) {
+//		this.propertyAddress = propertyAddress;
+//	}
 
 }

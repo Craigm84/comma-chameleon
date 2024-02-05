@@ -40,7 +40,7 @@ public class BookingServices {
 			dto.setTime(booking.getTime());
 			dto.setBuyerFirstName(booking.getBuyer().getFirstName());
 			dto.setBuyerLastName(booking.getBuyer().getLastName());
-			dto.setPropertyAddress(booking.getProperty().getAddress());
+//			dto.setPropertyAddress(booking.getProperty().getAddress());
 
 			bookingDtos.add(dto);
 

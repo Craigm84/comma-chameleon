@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lbg.project.domain.Property;
+import com.lbg.project.dto.PropertyDTO;
 import com.lbg.project.services.PropertyServices;
 
 @RestController
@@ -39,7 +40,7 @@ public class PropertyController {
 	}
 
 	@GetMapping("/get/{id}")
-	public ResponseEntity<Property> getProperty(@PathVariable int id) {
+	public ResponseEntity<PropertyDTO> getProperty(@PathVariable int id) {
 		return this.service.getProperty(id);
 	}
 
