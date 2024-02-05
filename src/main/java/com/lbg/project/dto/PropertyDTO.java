@@ -1,47 +1,54 @@
-package com.lbg.project.domain;
+package com.lbg.project.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.lbg.project.domain.Booking;
+import com.lbg.project.domain.Property;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+public class PropertyDTO {
 
-@Entity
-public class Property {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(nullable = false)
-	private String address;
-	@Column(nullable = false)
-	private String city;
-	@Column(nullable = false)
-	private String type;
-	@Column(nullable = false)
-	private int bedroom;
-	@Column(nullable = false)
-	private int bathroom;
-	@Column(nullable = false)
-	private double price;
-	@Column(nullable = false)
-	private String garden;
-	@Column(nullable = false)
-	private String status;
-	@Column(nullable = false)
-	private String image;
-	@Column(nullable = false)
-	@JsonManagedReference(value = "for-property")
-	@OneToMany(mappedBy = "property")
-	private List<Booking> bookings;
 
-	public Property() {
+	private String address;
+
+	private String city;
+
+	private String type;
+
+	private int bedroom;
+
+	private int bathroom;
+
+	private double price;
+
+	private String garden;
+
+	private String status;
+
+	private String image;
+
+	private List<BookingDTO> bookings = new ArrayList<BookingDTO>();
+
+	public PropertyDTO() {
 		super();
+	}
+
+	public PropertyDTO(Property property) {
+		this.setId(property.getId());
+		this.setAddress(property.getAddress());
+		this.setCity(property.getCity());
+		this.setType(property.getType());
+		this.setBedroom(property.getBedroom());
+		this.setBathroom(property.getBathroom());
+		this.setPrice(property.getPrice());
+		this.setGarden(property.getGarden());
+		this.setStatus(property.getStatus());
+		this.setImage(property.getImage());
+
+		for (Booking booking : property.getBookings()) {
+			this.bookings.add(new BookingDTO(booking));
+		}
 	}
 
 	public Integer getId() {
@@ -116,11 +123,11 @@ public class Property {
 		this.status = status;
 	}
 
-	public List<Booking> getBookings() {
+	public List<BookingDTO> getBookings() {
 		return bookings;
 	}
 
-	public void setBookings(List<Booking> bookings) {
+	public void setBookings(List<BookingDTO> bookings) {
 		this.bookings = bookings;
 	}
 
