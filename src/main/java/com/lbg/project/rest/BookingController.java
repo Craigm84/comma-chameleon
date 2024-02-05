@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lbg.project.domain.Booking;
+import com.lbg.project.dto.BookingDTO;
 import com.lbg.project.services.BookingServices;
 
 @RestController
@@ -34,7 +35,7 @@ public class BookingController {
 	}
 
 	@GetMapping("/get")
-	public List<Booking> getBookings() {
+	public List<BookingDTO> getBookings() {
 		return this.service.getBookings();
 	}
 

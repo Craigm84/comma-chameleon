@@ -36,7 +36,7 @@ public class Property {
 	@Column(nullable = false)
 	private String image;
 	@Column(nullable = false)
-	@JsonManagedReference
+	@JsonManagedReference(value = "for-property")
 	@OneToMany(mappedBy = "property")
 	private List<Booking> bookings;
 

@@ -1,13 +1,15 @@
 package com.lbg.project.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Buyer {
@@ -19,9 +21,14 @@ public class Buyer {
 	private String firstName;
 	@Column(nullable = false)
 	private String lastName;
-	@JsonBackReference
-	@ManyToOne
-	private Booking booking;
+
+//	@JsonBackReference
+//	@ManyToOne
+//	private Booking booking;
+
+	@JsonManagedReference(value = "for-buyer")
+	@OneToMany(mappedBy = "buyer")
+	private List<Booking> bookings;
 
 	public Buyer() {
 		super();
