@@ -1,5 +1,6 @@
 package com.lbg.project.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.lbg.project.domain.Booking;
+import com.lbg.project.dto.BookingDTO;
 import com.lbg.project.repos.BookingsRepo;
 
 @Service
@@ -25,8 +27,25 @@ public class BookingServices {
 
 	}
 
-	public List<Booking> getBookings() {
-		return this.repo.findAll();
+	public List<BookingDTO> getBookings() {
+
+		List<Booking> bookings = this.repo.findAll();
+		List<BookingDTO> bookingDtos = new ArrayList<>();
+
+		for (Booking booking : bookings) {
+			BookingDTO dto = new BookingDTO();
+
+			dto.setId(booking.getId());
+			dto.setDate(booking.getDate());
+			dto.setTime(booking.getTime());
+			dto.setBuyerFirstName(booking.getBuyer().getFirstName());
+			dto.setBuyerLastName(booking.getBuyer().getLastName());
+			dto.setPropertyAddress(booking.getProperty().getAddress());
+
+			bookingDtos.add(dto);
+
+		}
+		return bookingDtos;
 
 	}
 
