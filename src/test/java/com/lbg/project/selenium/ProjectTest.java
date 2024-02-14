@@ -26,6 +26,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 public class ProjectTest {
 
 	private RemoteWebDriver driver;
+//	private WebDriverWait wait;
 
 	@LocalServerPort
 	private int port;
@@ -34,12 +35,13 @@ public class ProjectTest {
 	void init() {
 		this.driver = new ChromeDriver();
 		this.driver.manage().window().maximize();
-		this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	}
 
-//create buyer
 	@Test
 	@Order(1)
+//	create buyer
+
 	void testCreateBuyer() {
 		this.driver.get("http://localhost:" + this.port);
 
@@ -64,12 +66,11 @@ public class ProjectTest {
 		WebElement Delete = this.driver.findElement(By
 				.cssSelector("#root > div > div > div.col-4 > div > div:nth-child(2) > div > p:nth-child(2) > button"));
 		Delete.click();
-//
+
 //		this code failed due to no function in react...
-//
+
 	}
 
-//
 	@Test
 	@Order(2)
 	void testCreateSeller() {
@@ -97,14 +98,13 @@ public class ProjectTest {
 				.cssSelector("#root > div > div > div.col-4 > div > div:nth-child(2) > div > p:nth-child(2) > button"));
 		Deletes.click();
 
-//		this code failed due to no function in react...
+		// this code failed due to no function in react...
 
 	}
-//
 
 	@Test
 	@Order(3)
-	void testAddPropety() {
+	void testAddPropety() throws InterruptedException {
 		this.driver.get("http://localhost:" + this.port);
 		WebElement clickAddProperty = this.driver
 				.findElement(By.cssSelector("#root > div > nav > div > a:nth-child(6) > button"));
@@ -169,16 +169,60 @@ public class ProjectTest {
 		WebElement clickSold = this.driver.findElement(By.cssSelector(
 				"#root > div > div > div > div > div:nth-child(2) > div > div > div > div > button.btn.btn-warning"));
 		this.driver.executeScript("arguments[0].scrollIntoView(true);", clickSold);
+		Thread.sleep(500);
 		clickSold.click();
 
 		WebElement clickWithdraw = this.driver.findElement(
 				By.cssSelector("#root > div > div > div > div > div > div > div > div > div > button.btn.btn-danger"));
-//		this.driver.executeScript("arguments[0].scrollIntoView(true);", clickWithdraw);
 		clickWithdraw.click();
 
 		WebElement clickForSale = this.driver.findElement(By
 				.cssSelector("#root > div > div > div > div > div > div > div > div > div > button.btn.btn-secondary"));
-//		this.driver.executeScript("arguments[0].scrollIntoView(true);", clickForSale);
 		clickForSale.click();
+
+		WebElement clickBooking = this.driver.findElement(By
+				.cssSelector("#root > div > div > div > div > div:nth-child(1) > div > div > button.btn.btn-success"));
+		clickBooking.click();
+
+		WebElement selectDate = this.driver
+				.findElement(By.cssSelector("#root > div > div > div.col-6 > form > div > input"));
+		selectDate.sendKeys("04-11-2023");
+
+		WebElement selectTime = this.driver.findElement(By
+				.cssSelector("#root > div > div > div.col-6 > form > div > select:nth-child(4) > option:nth-child(4)"));
+		selectTime.click();
+
+		WebElement selectBuyer = this.driver.findElement(By
+				.cssSelector("#root > div > div > div.col-6 > form > div > select:nth-child(6) > option:nth-child(2)"));
+		selectBuyer.click();
+
+		WebElement clickSubmitBooking = this.driver
+				.findElement(By.cssSelector("#root > div > div > div.col-6 > form > div > button"));
+		clickSubmitBooking.click();
+
+		WebElement checkBooking = this.driver
+				.findElement(By.cssSelector("#root > div > div > div.col-6 > div > div:nth-child(2) > p:nth-child(1)"));
+		Assertions.assertEquals("Buyer: Mike Atkoo", checkBooking.getText());
+	}
+
+	@Test
+	@Order(4)
+	void HomePageTest() throws InterruptedException {
+		this.driver.get("http://localhost:" + this.port);
+		WebElement homePage = this.driver
+				.findElement(By.cssSelector("#root > div > nav > div > a:nth-child(2) > button"));
+		homePage.click();
+
+		WebElement changeTheme = this.driver.findElement(By.cssSelector("#root > div > nav > div > button"));
+		changeTheme.click();
+
+		WebElement map = this.driver.findElement(By.cssSelector("#root > div > div > div > a > p > b"));
+		map.click();
+
+		driver.findElement(By.linkText("B5 4BE - Google Maps")).click();
+		WebElement cookies = this.driver.findElement(By.cssSelector(
+				"#yDmH0d > c-wiz > div > div > div > div.NIoIEf > div.G4njw > div.AIC7ge > div.CxJub > div.VtwTSb > form:nth-child(2) > div > div > button > div.VfPpkd-RLmnJb"));
+		cookies.click();
+//		Thread.sleep(2000);
 	}
 }

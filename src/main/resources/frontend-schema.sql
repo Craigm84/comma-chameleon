@@ -1,10 +1,9 @@
-DROP TABLE `booking` CASCADE;
-DROP TABLE `property`;
-DROP TABLE `buyer` ;
-DROP TABLE `seller`;
+DROP TABLE IF EXISTS `booking` CASCADE;
+DROP TABLE IF EXISTS `property`;
+DROP TABLE IF EXISTS `buyer` ;
+DROP TABLE IF EXISTS `seller`;
+CREATE TABLE IF NOT EXISTS `buyer`(
 
-CREATE TABLE `buyer`(
->>>>>>> 60d75a91f8ecfab47a52c5cff8f8091c53294ba0
 `id` INT PRIMARY KEY AUTO_INCREMENT,
 `first_name` VARCHAR,
 `last_name` VARCHAR
