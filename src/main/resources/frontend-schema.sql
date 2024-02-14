@@ -3,7 +3,7 @@ DROP TABLE `property` CASCADE;
 DROP TABLE `buyer` CASCADE;
 DROP TABLE `seller` CASCADE;
 
-CREATE TABLE `seller` (
+CREATE TABLE `seller (
 `id` INT PRIMARY KEY AUTO_INCREMENT,
 `first_name` VARCHAR,
 `last_name` VARCHAR
