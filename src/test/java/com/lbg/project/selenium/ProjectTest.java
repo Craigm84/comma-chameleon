@@ -256,9 +256,29 @@ public class ProjectTest {
 				"#root > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(3) > select > option:nth-child(4)"));
 		typeTest.click();
 
+		WebElement gardenField = this.driver.findElement(
+				By.cssSelector("#root > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(4) > select"));
+		gardenField.click();
+
+		WebElement gardenTest = this.driver.findElement(By.cssSelector(
+				"#root > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(4) > select > option:nth-child(3)"));
+		gardenTest.click();
+
 		WebElement bedClick = this.driver.findElement(
 				By.cssSelector("#root > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(1) > input"));
 		bedClick.sendKeys("5");
+
+		WebElement bathClick = this.driver.findElement(
+				By.cssSelector("#root > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(2) > input"));
+		bathClick.sendKeys("5");
+
+		WebElement priceClick = this.driver.findElement(
+				By.cssSelector("#root > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(3) > input"));
+		priceClick.sendKeys("200000");
+
+		WebElement priceMax = this.driver.findElement(
+				By.cssSelector("#root > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(4) > input"));
+		priceMax.sendKeys("300000");
 
 //		WebElement propCard = this.driver
 //				.findElement(By.cssSelector("#root > div > div > div > div > div > div > div > h4"));
