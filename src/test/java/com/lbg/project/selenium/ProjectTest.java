@@ -219,10 +219,10 @@ public class ProjectTest {
 		WebElement map = this.driver.findElement(By.cssSelector("#root > div > div > div > a > p > b"));
 		map.click();
 
-		driver.findElement(By.linkText("B5 4BE - Google Maps")).click();
-		WebElement cookies = this.driver.findElement(By.cssSelector(
-				"#yDmH0d > c-wiz > div > div > div > div.NIoIEf > div.G4njw > div.AIC7ge > div.CxJub > div.VtwTSb > form:nth-child(2) > div > div > button > div.VfPpkd-RLmnJb"));
-		cookies.click();
+//		driver.findElement(By.linkText("B5 4BE - Google Maps")).click();
+//		WebElement cookies = this.driver.findElement(By.cssSelector(
+//				"#yDmH0d > c-wiz > div > div > div > div.NIoIEf > div.G4njw > div.AIC7ge > div.CxJub > div.VtwTSb > form:nth-child(2) > div > div > button > div.VfPpkd-RLmnJb"));
+//		cookies.click();
 //		Thread.sleep(2000);
 	}
 
