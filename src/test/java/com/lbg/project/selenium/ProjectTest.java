@@ -203,6 +203,11 @@ public class ProjectTest {
 		WebElement checkBooking = this.driver
 				.findElement(By.cssSelector("#root > div > div > div.col-6 > div > div:nth-child(2) > p:nth-child(1)"));
 		Assertions.assertEquals("Buyer: Mike Atkoo", checkBooking.getText());
+
+		WebElement deleteBooking = this.driver
+				.findElement(By.cssSelector("#root > div > div > div.col-6 > div > div > p:nth-child(4) > button"));
+		deleteBooking.click();
+
 	}
 
 	@Test
