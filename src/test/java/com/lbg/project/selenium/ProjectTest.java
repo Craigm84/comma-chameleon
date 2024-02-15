@@ -225,4 +225,40 @@ public class ProjectTest {
 		cookies.click();
 //		Thread.sleep(2000);
 	}
+
+	@Test
+	@Order(5)
+	void filterProp() throws InterruptedException {
+		this.driver.get("http://localhost:" + this.port);
+
+		WebElement clickFilter = this.driver
+				.findElement(By.cssSelector("#root > div > nav > div > a:nth-child(5) > button"));
+		clickFilter.click();
+
+		WebElement addressField = this.driver.findElement(
+				By.cssSelector("#root > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(1) > input"));
+		addressField.sendKeys("scouse");
+
+		WebElement cityField = this.driver.findElement(
+				By.cssSelector("#root > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > input"));
+		cityField.sendKeys("Liverpool");
+
+		WebElement typeField = this.driver.findElement(
+				By.cssSelector("#root > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(3) > select"));
+		typeField.click();
+
+		WebElement typeTest = this.driver.findElement(By.cssSelector(
+				"#root > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(3) > select > option:nth-child(4)"));
+		typeTest.click();
+
+		WebElement bedClick = this.driver.findElement(
+				By.cssSelector("#root > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(1) > input"));
+		bedClick.sendKeys("5");
+
+//		WebElement propCard = this.driver
+//				.findElement(By.cssSelector("#root > div > div > div > div > div > div > div > h4"));
+//		Assertions.assertEquals("240000", propCard.getText());
+
+	}
+
 }
